@@ -24,10 +24,10 @@
 $valor1 =  $_POST['valor1'];
 $valor2 =  $_POST['valor2'];
 
-// Realizar la operación de suma
-$resultado = $valor1 + $valor2;
+// Realizar la operación de potencia
+$resultado = pow($valor1, $valor2);
 
-$operacion = "Suma";
+$operacion = "Potencia";
 
 // Vista
 include "views/resultado.view.php";
