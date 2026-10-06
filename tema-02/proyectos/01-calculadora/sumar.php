@@ -16,10 +16,10 @@
 
 // modelo
 
-//negociado
+//negociado del controlador
 // recoger los valores del formulario
-$valor1 = $_POST['valor1'];
-$valor2 = $_POST['valor2'];
+$valor1 = (float) $_POST['valor1'];
+$valor2 = (float) $_POST['valor2'];
 
 // realizar la operación de suma
 $resultado = $valor1 + $valor2;
