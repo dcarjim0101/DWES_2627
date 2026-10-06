@@ -40,7 +40,15 @@
                 <!-- Campo valor 2 -->
                 <div class="mb-3">
                     <label for="valor2" class="form-label">Valor 2:</label>
-                    <input type="number" class="form-control" step="0.01" placeholder="0.00" id="valor2" name="valor2" required>
+                    <input type="number" class="form-control" step="0.01">
+                    $valor2 ?>" readonLy>
+                </div>
+
+                <!-- Campo valor 3 -->
+                <div class="mb-3">
+                    <label for="resultado" class="form-label">$operacion ?></label>
+                    <input type="number" class="form-control" step="0.01">
+                    $resultado ?>" readonLy>
                 </div>
                 
                 <!-- botones de accion -->
