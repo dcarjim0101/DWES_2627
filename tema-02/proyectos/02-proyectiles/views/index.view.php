@@ -25,19 +25,30 @@
         <main>
             <div class="content">
 
+            <!-- Mensajes de error (los envía calcular.php si los datos no son válidos) -->
+            <?php if (!empty($errores)): ?>
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        <?php foreach ($errores as $error): ?>
+                            <li><?= htmlspecialchars($error) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+
             <!-- Formulario de la calculadora -->
             <form method="post">
                 <!-- Campo velocidad inicial -->
                 <div class="mb-3">
                     <label for="velocidad_inicial" class="form-label">Velocidad Inicial:</label>
-                    <input type="number" class="form-control" step="0.01" placeholder="0.00" id="velocidad_inicial" name="velocidad_inicial" required>
+                    <input type="number" class="form-control" step="any" placeholder="0.00" id="velocidad_inicial" name="velocidad_inicial" value="<?= htmlspecialchars($velocidad ?? '') ?>" required>
                     <small class="text-muted">Velocidad en m/s</small>   
                 </div>
 
                 <!-- angulo de lanzamiento -->
                 <div class="mb-3">
                     <label for="angulo_lanzamiento" class="form-label">Ángulo de Lanzamiento:</label>
-                    <input type="number" class="form-control" step="0.01" placeholder="0.01" id="angulo_lanzamiento" name="angulo_lanzamiento" required>
+                    <input type="number" class="form-control" step="any" placeholder="0.01" id="angulo_lanzamiento" name="angulo_lanzamiento" value="<?= htmlspecialchars($angulo ?? '') ?>" required>
                     <small class="text-muted">Ángulo en grados</small>   
                 </div>
 

@@ -17,5 +17,6 @@
 $errores = [];
 $velocidad = '';
 $angulo = '';
+
 // vista
-include 'views/index.view.php';
+include __DIR__ . '/views/index.view.php';
