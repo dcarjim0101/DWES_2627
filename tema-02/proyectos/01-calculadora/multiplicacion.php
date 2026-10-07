@@ -1,7 +1,7 @@
 <?php
 
 /*
- controlador: sumar.php
+ controlador: multiplicacion.php
 
  Proyecto: proyecto 2.1 - calculadora básica
  Descripción: Calculadora de operaciones básicas:

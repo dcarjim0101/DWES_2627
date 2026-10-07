@@ -14,6 +14,8 @@
 */
 
 // modelo
-
+$errores = [];
+$velocidad = '';
+$angulo = '';
 // vista
 include 'views/index.view.php';
