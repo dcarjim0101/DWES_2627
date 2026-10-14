@@ -1,8 +1,8 @@
 <?php
 
 /*
-    if elseif
-    descripcion: dada una nota, se ha de devolver el ite de caliifcaion
+    ejemplo 36. estructura switch como alternativa a if elseif
+    descripcion: dada una nota, se ha de devolver el item de calificación
     - insuficiente
     - suficiente
     - bien
