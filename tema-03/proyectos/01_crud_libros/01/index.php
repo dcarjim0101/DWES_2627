@@ -1,13 +1,9 @@
 <?php
 
-/**
- * index.php
- * 
- * pagina principal del proyecto CRUD de libros.
- * muestra una lista de libros y permite agregar, editar y eliminar libros.
- * 
- * @package CRUD Libros
- * @author David Carrero Jiménez
- * @version 1.0
- * 
- */
+// Modelo: carga las funciones y obtiene los datos
+require_once "libs/functions.php";
+
+$libros = get_libros();
+
+// Vista: se incluye al final, cuando $libros ya existe
+require_once "views/index.view.php";
