@@ -1,59 +1,65 @@
 <?php
 
-    /*
+/*
     Funciones incluidas:
-        - get_libros():
-            Devuelve un array con todos los libros del archivo JSON.
+        - get_articulos():
+            Devuelve un array con todos los articulos del archivo JSON.
     */
 
 
-// Funcion get_libros(): Devuelve un array con todos los libros del archivo JSON.
-function get_libros() {
+// Funcion get_articulos(): Devuelve un array con todos los libros del archivo JSON.
+function get_articulos() {
 
-$libros = [
-    [
-        
-        "id" => 1,
-        "titulo" => "El Quijote",
-        "autor" => "Miguel de Cervantes",
-        "anio" => 1605,
-        "generos" => ["Novela", "Aventura", "Comedia"],
-        "precio" => 15.99
-    ],
-    [
-        "id" => 2,
-        "titulo" => "Cien años de soledad",
-        "autor" => "Gabriel García Márquez",
-        "anio" => 1967,
-        "generos" => ["Ficción", "Realismo mágico"],
-        "precio" => 18.99
-    ],
-    [
-        "id" => 3,
-        "titulo" => "1984",
-        "autor" => "George Orwell",
-        "anio" => 1949,
-        "generos" => ["Ciencia ficción", "Drama"],
-        "precio" => 12.99
-    ],
-    [
-        "id" => 4,
-        "titulo" => "El Principito",
-        "autor" => "Antoine de Saint-Exupéry",
-        "anio" => 1943,
-        "generos" => ["Ficción", "Aventura"],
-        "precio" => 10.99
-    ],
-    [
-        "id" => 5,
-        "titulo" => "Orgullo y prejuicio",
-        "autor" => "Jane Austen",
-        "anio" => 1813,
-        "generos" => ["Ficción", "Romance"],
-        "precio" => 14.99
-    ]
-];
+    $articulos = [
+        [
+            "id" => 1,
+            "nombre" => "Portátil HP",
+            "descripcion" => "Ordenador portátil de 15 pulgadas",
+            "categoria" => "Informática",
+            "marcas" => ["HP", "Intel"],
+            "stock" => 10,
+            "precio" => 599.99
+        ],
+        [
+            "id" => 2,
+            "nombre" => "Ratón inalámbrico",
+            "descripcion" => "Ratón óptico inalámbrico con conexión USB",
+            "categoria" => "Periféricos",
+            "marcas" => ["Logitech"],
+            "stock" => 25,
+            "precio" => 19.99
+        ],
+        [
+            "id" => 3,
+            "nombre" => "Teclado mecánico",
+            "descripcion" => "Teclado mecánico con iluminación RGB",
+            "categoria" => "Periféricos",
+            "marcas" => ["Corsair", "Razer"],
+            "stock" => 15,
+            "precio" => 79.99
+        ],
+        [
+            "id" => 4,
+            "nombre" => "Monitor Samsung",
+            "descripcion" => "Monitor de 27 pulgadas con resolución Full HD",
+            "categoria" => "Pantallas",
+            "marcas" => ["Samsung"],
+            "stock" => 8,
+            "precio" => 189.99
+        ],
+        [
+            "id" => 5,
+            "nombre" => "Auriculares Bluetooth",
+            "descripcion" => "Auriculares inalámbricos con cancelación de ruido",
+            "categoria" => "Audio",
+            "marcas" => ["Sony", "JBL"],
+            "stock" => 20,
+            "precio" => 49.99
+        ]
+    ];
 
-    return $libros;
+    return $articulos;
 }
+
+$articulos = get_articulos();
 ?>
