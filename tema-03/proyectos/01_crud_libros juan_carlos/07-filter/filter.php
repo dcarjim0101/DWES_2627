@@ -25,11 +25,11 @@ require_once 'libs/functions.php';
 // Models
 
 // Negociado
-// Obtener el criterio de ordenación siempre ASCENDENTE
-// order.php?criterio=titulo - ordenar la tabla de libros por titulo
-$criterio = htmlspecialchars($_GET['criterio'] ?? null);
+// Obtener el prompt de busqueda que se pasa por la URL
+// filter.php?prompt=cervantes
+$prompt = htmlspecialchars($_GET['criterio'] ?? null);
 
-// Validar el criterio recibido
+// Validar el criterio regular
 
 // Cargar el array de libros
 $libros = get_libros();
