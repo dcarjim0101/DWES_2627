@@ -38,7 +38,7 @@ $libros = get_libros();
 unset($libros[$indice]);
 
 // Cargo la vista de edición con los detalles del libro a editar
-require_once 'views/edit.view.php';
+require_once 'views/index.view.php';
 
 
 

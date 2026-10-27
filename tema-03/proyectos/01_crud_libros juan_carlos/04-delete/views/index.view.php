@@ -105,8 +105,12 @@
                                     <a href="edit.php?indice=<?= $indice ?>" class="btn btn-outline-primary btn-sm" title="Editar">
                                         <i class="bi bi-pencil"></i>
                                     </a> 
+
                                     <!-- eliminar -->
-                                    <i class="bi bi-trash3"></i>
+                                    <a href="delete.php?indice=<?= $indice ?>" class="btn btn-outline-primary btn-sm" title="Editar">
+                                        <i class="bi bi-trash3"></i>
+                                    </a>
+                                    
                                     <!-- mostrar -->
                                     <i class="bi bi-eye"></i>    
                                 </td>
