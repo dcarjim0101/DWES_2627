@@ -32,7 +32,7 @@
                 <legend>Formulario Editar Libro</legend>
 
                 <!-- formulario nuevo libro -->
-                <form action="update.php?indice=<?" method="post">
+                <form action="update.php?indice=<?= $indice ?>" method="post">
                     <div class="mb-3">
                         <label for="titulo" class="form-label">Título:</label>
                         <input type="text" class="form-control" id="titulo" name="titulo" value="<?=  $libro['titulo'] ?>" required>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * edit.php
+ * update.php
  *
  * permite editar un libro existente en la tabla de libros
  *
@@ -32,14 +32,14 @@ $indice = htmlspecialchars($_GET['indice'] ?? null);
 // Cargar el array de libros
 $libros = get_libros();
 
-// crear el array de libros con los datos del formulario
+// Cargo los datos del formulario
 $titulo = htmlspecialchars($_POST['titulo'] ?? '');
 $autor = htmlspecialchars($_POST['autor'] ?? '');
 $editorial = htmlspecialchars($_POST['editorial'] ?? '');
 $generos = htmlspecialchars($_POST['generos'] ?? '');
 $precio = htmlspecialchars($_POST['precio'] ?? '');
 
-// Crear array asociativo con los datos del libro
+// Crear array asociativo con los datos del libro editado
 $edit_book = [
     'id' => $libros[$indice]['id'],
     'titulo' => $titulo,
@@ -49,8 +49,11 @@ $edit_book = [
     'precio' => $precio
 ];
 
-// actualizar el libro en el array de libros
+// Actualizar el libro en el array de libros
 $libros[$indice] = $edit_book;
 
 // Cargo la vista de edición con los detalles del libro a editar
 require_once 'views/index.view.php';
+
+
+
