@@ -27,19 +27,24 @@ require_once 'libs/functions.php';
 // Negociado
 // Obtener el prompt de busqueda que se pasa por la URL
 // filter.php?prompt=cervantes
-$prompt = htmlspecialchars($_GET['criterio'] ?? null);
+$prompt = htmlspecialchars($_GET['prompt'] ?? null);
 
 // Validar el criterio regular
 
 // Cargar el array de libros
 $libros = get_libros();
 
-// Ordenamos el array de libros segun el criterio recibido
-$array_criterio = array_column($libros, $criterio);
-array_multisort($array_criterio, SORT_ASC, $libros);
+// filtrar el array de libros a partir del prompt
+$aux = [];
+foreach ($libros as $libros){
+    // recorro cada campo del libro
+    if (array_search($prompt, $libro) !== false){
+        // si el libro contiene la expresion de busqueda, añado el libro al array auxiliar
+        $aux[] = $libro;
+    }
+}
+
+$libros = $aux;
 
 // Cargo la vista de edición con los detalles del libro a editar
 require_once 'views/index.view.php';
-
-
-

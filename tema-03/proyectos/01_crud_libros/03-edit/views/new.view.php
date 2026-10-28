@@ -23,14 +23,16 @@
             <i class="bi bi-stack"></i>
             <span class="fs-6">Proyecto 3.1 - CRUD Libros</span>
         </header>
+        
 
         <!-- contenido principal de la aplicación -->
-        
         <main>
             <div class="content">
 
-                <legend>Formulario nuevo libro</legend>
-                <form method="post">
+                <legend>Formulario Nuevo Libro</legend>
+
+                <!-- formulario nuevo libro -->
+                <form action="create.php" method="post">
                     <div class="mb-3">
                         <label for="titulo" class="form-label">Título:</label>
                         <input type="text" class="form-control" id="titulo" name="titulo" required>
@@ -45,15 +47,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="generos" class="form-label">Géneros:</label>
-                        <input type="text" class="form-control" id="generos" name="generos" required>
+                        <input type="text" class="form-control" id="generos" name="generos">
                     </div>
                     <div class="mb-3">
                         <label for="precio" class="form-label">Precio:</label>
-                        <input type="number" class="form-control" id="precio" name="precio" step="0.01" required>
+                        <input type="number" step="0.01" class="form-control" id="precio" name="precio">
                     </div>
                     <a class="btn-solid theme-danger" href="index.php" role="button">Cancelar</a>
                     <button type="reset" class="btn-solid theme-warning">Borrar</button>
-                    <button type="submit" class="btn-solid theme-primary">Crear libro</button>
+                    <button type="submit" class="btn-solid theme-primary">Crear Libro</button>
                 </form>
             </div>
 
@@ -63,7 +65,7 @@
         <footer class="footer mt-auto py-3 fixed-bottom bg-light">
             <div class="container">
                 <span class="text-muted">&copy; 2026
-                    David Carrero Jiménez - DWES - 2º DAW - Curso 26/27
+                    Juan Carlos Moreno - DWES - 2º DAW - Curso 26/27
                 </span>
             </div>
         </footer>

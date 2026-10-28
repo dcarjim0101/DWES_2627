@@ -25,7 +25,6 @@
         </header>
 
         <!-- Menú principal de la aplicación -->
-
         <nav class="navbar md:navbar-expand bg-1">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Libros</a>
@@ -77,43 +76,38 @@
         <main>
             <div class="content">
 
-                <legend>Listado de libros</legend>
+                <legend>Tabla de libros</legend>
 
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">id</th>
                             <th scope="col">Título</th>
                             <th scope="col">Autor</th>
                             <th scope="col">Editorial</th>
-                            <th scope="col">Géneros</th>
+                            <th scope="col">Género</th>
                             <th scope="col" class="text-end">Precio</th>
                         </tr>
                     </thead>
-
                     <tbody>
-                        <?php foreach ($libros as $libro) : ?>
+                        <?php foreach ($libros as $libro): ?>
                             <tr>
-                                <th scope="row"><?= $libro['id']; ?></th>
-                                <td><?= $libro['titulo']; ?></td>
-                                <td><?= $libro['autor']; ?></td>
-                                <td><?= $libro['editorial']; ?></td>
-                                <td><?= implode(', ', $libro['generos']); ?></td>
-                                <td class="text-end">
-                                    <?= number_format($libro['precio'], 2, ',', '.'); ?> €
-                                </td>
+                                <th scope="row" class="text-end"><?= $libro['id']  ?></th>
+                                <td><?= $libro['titulo']  ?></td>
+                                <td><?= $libro['autor']  ?></td>
+                                <td><?= implode(', ', $libro['generos'])  ?></td>
+                                <td><?= $libro['editorial']  ?></td>
+                                <td class="text-end"><?= number_format($libro['precio'], 2, ',', '.')  ?> €</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
-
                     <tfoot>
                         <tr>
-                            <td colspan="5" class="text-end">Total de libros:</td>
-                            <td class="text-end"><?= count($libros); ?></td>
+                            <td colspan="5" class="text-end">Total</td>
+                            <td class="text-end"><?= count($libros)  ?></td>
                         </tr>
                     </tfoot>
                 </table>
-
 
             </div>
 
@@ -123,7 +117,7 @@
         <footer class="footer mt-auto py-3 fixed-bottom bg-light">
             <div class="container">
                 <span class="text-muted">&copy; 2026
-                    David Carrero Jiménez - DWES - 2º DAW - Curso 26/27
+                    Juan Carlos Moreno - DWES - 2º DAW - Curso 26/27
                 </span>
             </div>
         </footer>

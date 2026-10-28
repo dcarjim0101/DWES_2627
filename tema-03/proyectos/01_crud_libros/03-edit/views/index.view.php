@@ -25,7 +25,6 @@
         </header>
 
         <!-- Menú principal de la aplicación -->
-
         <nav class="navbar md:navbar-expand bg-1">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Libros</a>
@@ -77,57 +76,51 @@
         <main>
             <div class="content">
 
-                <legend>Listado de libros</legend>
+                <legend>Tabla de libros</legend>
 
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">id</th>
                             <th scope="col">Título</th>
                             <th scope="col">Autor</th>
                             <th scope="col">Editorial</th>
-                            <th scope="col">Géneros</th>
+                            <th scope="col">Género</th>
                             <th scope="col" class="text-end">Precio</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
-
                     <tbody>
-                        <?php foreach ($libros as $libro) : ?>
+                        <?php foreach ($libros as $indice => $libro): ?>
                             <tr>
-                                <th scope="row"><?= $libro['id']; ?></th>
-                                <td><?= $libro['titulo']; ?></td>
-                                <td><?= $libro['autor']; ?></td>
-                                <td><?= $libro['editorial']; ?></td>
-                                <td><?= implode(', ', $libro['generos']); ?></td>
-                                <td class="text-end">
-                                    <?= number_format($libro['precio'], 2, ',', '.'); ?> €
-                                    <!-- botones de accion -->
-                                </td>
-                                <!-- editar -->
-                                <a href="edit.php?indice=<?= $indice ?>" class="btn btn-outline-primary btn-sm" title="Editar">
-                                    <i class="bi bi-pencil"></i>
-                                </a>
-                                <!-- al controlador edit le estoy pasando mediante el metodo get el parametro indice que me va a indicar el indice del libro que voy a editar-->
-                                <td>
+                                <th scope="row" class="text-end"><?= $libro['id']  ?></th>
+                                <td><?= $libro['titulo']  ?></td>
+                                <td><?= $libro['autor']  ?></td>
+                                <td><?= implode(', ', $libro['generos'])  ?></td>
+                                <td><?= $libro['editorial']  ?></td>
+                                <td class="text-end"><?= number_format($libro['precio'], 2, ',', '.')  ?> €</td>
+                                <!-- botones de acción -->
+                                <td> 
+                                    <!-- boton editar -->
+                                    <a href="edit.php?indice=<?= $indice ?>" class="btn btn-outline-primary btn-sm" title="Editar">
+                                        <i class="bi bi-pencil"></i>
+                                    </a> 
                                     <!-- eliminar -->
                                     <i class="bi bi-trash3"></i>
-                                
                                     <!-- mostrar -->
-                                    <i class="bi bi-eye"></i>
+                                    <i class="bi bi-eye"></i>    
                                 </td>
+                                
                             </tr>
-                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                     </tbody>
-
                     <tfoot>
                         <tr>
-                            <td colspan="5" class="text-end">Total de libros:</td>
-                            <td class="text-end"><?= count($libros); ?></td>
+                            <td colspan="6" class="text-end">Total</td>
+                            <td class="text-end"><?= count($libros)  ?></td>
                         </tr>
                     </tfoot>
                 </table>
-
 
             </div>
 
@@ -137,7 +130,7 @@
         <footer class="footer mt-auto py-3 fixed-bottom bg-light">
             <div class="container">
                 <span class="text-muted">&copy; 2026
-                    David Carrero Jiménez - DWES - 2º DAW - Curso 26/27
+                    Juan Carlos Moreno - DWES - 2º DAW - Curso 26/27
                 </span>
             </div>
         </footer>

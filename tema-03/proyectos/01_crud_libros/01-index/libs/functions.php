@@ -1,59 +1,58 @@
 <?php
 
-    /*
+/*
+    librería: functions.php
+    Funciones auxiliares para el proyecto CRUD de libros.
+
     Funciones incluidas:
-        - get_libros():
-            Devuelve un array con todos los libros del archivo JSON.
-    */
+        - get_libros(): Devuelve un array con todos los libros creados.
+*/
 
-
-// Funcion get_libros(): Devuelve un array con todos los libros del archivo JSON.
+// Función get_libros(): Devuelve un array con todos los libros creados.
 function get_libros() {
-
-$libros = [
-    [
-        
-        "id" => 1,
-        "titulo" => "El Quijote",
-        "autor" => "Miguel de Cervantes",
-        "anio" => 1605,
-        "generos" => ["Novela", "Aventura", "Comedia"],
-        "precio" => 15.99
-    ],
-    [
-        "id" => 2,
-        "titulo" => "Cien años de soledad",
-        "autor" => "Gabriel García Márquez",
-        "anio" => 1967,
-        "generos" => ["Ficción", "Realismo mágico"],
-        "precio" => 18.99
-    ],
-    [
-        "id" => 3,
-        "titulo" => "1984",
-        "autor" => "George Orwell",
-        "anio" => 1949,
-        "generos" => ["Ciencia ficción", "Drama"],
-        "precio" => 12.99
-    ],
-    [
-        "id" => 4,
-        "titulo" => "El Principito",
-        "autor" => "Antoine de Saint-Exupéry",
-        "anio" => 1943,
-        "generos" => ["Ficción", "Aventura"],
-        "precio" => 10.99
-    ],
-    [
-        "id" => 5,
-        "titulo" => "Orgullo y prejuicio",
-        "autor" => "Jane Austen",
-        "anio" => 1813,
-        "generos" => ["Ficción", "Romance"],
-        "precio" => 14.99
-    ]
-];
+    // Array de libros (simulando una base de datos)
+    $libros = [
+        [
+            'id' => 1,
+            'titulo' => 'Cien años de soledad',
+            'autor' => 'Gabriel García Márquez',
+            'editorial' => 'Editorial Sudamericana',
+            'generos' => ['Realismo mágico', 'Novela'],
+            'precio' => 19.99
+        ],
+        [
+            'id' => 2,
+            'titulo' => '1984',
+            'autor' => 'George Orwell',
+            'editorial' => 'Secker & Warburg',
+            'generos' => ['Distopía', 'Ciencia ficción'],
+            'precio' => 14.99
+        ],
+        [
+            'id' => 3,
+            'titulo' => 'El gran Gatsby',
+            'autor' => 'F. Scott Fitzgerald',
+            'editorial' => 'Charles Scribner\'s Sons',
+            'generos' => ['Novela', 'Literatura estadounidense'],
+            'precio' => 12.99
+        ],
+        [
+            'id' => 4,
+            'titulo' => 'Don Quijote de la Mancha',
+            'autor' => 'Miguel de Cervantes',
+            'editorial' => 'Francisco de Robles',
+            'generos' => ['Novela', 'Literatura española'],
+            'precio' => 24.99
+        ],
+        [
+            'id' => 5,
+            'titulo' => 'El señor de los anillos',
+            'autor' => 'J.R.R. Tolkien',
+            'editorial' => 'Allen & Unwin',
+            'generos' => ['Fantasía', 'Aventura'],
+            'precio' => 29.99
+        ]
+    ];
 
     return $libros;
 }
-?>

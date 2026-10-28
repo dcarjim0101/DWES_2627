@@ -23,39 +23,39 @@
             <i class="bi bi-stack"></i>
             <span class="fs-6">Proyecto 3.1 - CRUD Libros</span>
         </header>
+        
 
         <!-- contenido principal de la aplicación -->
-        
         <main>
             <div class="content">
 
-                <legend>Formulario editar libro</legend>
+                <legend>Formulario Editar Libro</legend>
 
                 <!-- formulario nuevo libro -->
-                <form action="update.php" method="post">
+                <form action="update.php?indice=<?= $indice ?>" method="post">
                     <div class="mb-3">
                         <label for="titulo" class="form-label">Título:</label>
-                        <input type="text" class="form-control" id="titulo" name="titulo" value="<?= $libro['titulo'] ?>" required>
+                        <input type="text" class="form-control" id="titulo" name="titulo" value="<?=  $libro['titulo'] ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="autor" class="form-label">Autor:</label>
-                        <input type="text" class="form-control" id="autor" name="<?= $libro['autor'] ?>" required>
+                        <input type="text" class="form-control" id="autor" name="autor" value="<?=  $libro['autor'] ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="editorial" class="form-label">Editorial:</label>
-                        <input type="text" class="form-control" id="editorial" name="<?= $libro['editorial'] ?>" required>
+                        <input type="text" class="form-control" id="editorial" name="editorial" value="<?=  $libro['editorial'] ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="generos" class="form-label">Géneros:</label>
-                        <input type="text" class="form-control" id="generos" name="<?= implode(', ',($libro['generos']) ?>" required>
+                        <input type="text" class="form-control" id="generos" name="generos" value="<?=  implode(', ', $libro['generos']) ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="precio" class="form-label">Precio:</label>
-                        <input type="number" class="form-control" id="precio" name="<?= $libro['precio'] ?>" step="0.01" required>
+                        <input type="number" step="0.01" class="form-control" id="precio" name="precio" value="<?=  $libro['precio'] ?>" required>
                     </div>
                     <a class="btn-solid theme-danger" href="index.php" role="button">Cancelar</a>
                     <button type="reset" class="btn-solid theme-warning">Borrar</button>
-                    <button type="submit" class="btn-solid theme-primary">Crear libro</button>
+                    <button type="submit" class="btn-solid theme-primary">Actualizar Libro</button>
                 </form>
             </div>
 
@@ -65,7 +65,7 @@
         <footer class="footer mt-auto py-3 fixed-bottom bg-light">
             <div class="container">
                 <span class="text-muted">&copy; 2026
-                    David Carrero Jiménez - DWES - 2º DAW - Curso 26/27
+                    Juan Carlos Moreno - DWES - 2º DAW - Curso 26/27
                 </span>
             </div>
         </footer>

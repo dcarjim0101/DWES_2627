@@ -46,21 +46,22 @@
                             </li>
                             <li class="nav-item">
                                 <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">
-                                    Menu
+                                    Ordenar
                                 </button>
                                 <div class="menu">
-                                    <a class="menu-item" href="#">Action</a>
-                                    <a class="menu-item" href="#">Another action</a>
+                                    <a class="menu-item" href="order.php?criterio=id">Id</a>
+                                    <a class="menu-item" href="order.php?criterio=titulo">Titulo</a>
+                                    <a class="menu-item" href="order.php?criterio=autor">Autor</a>
+                                    <a class="menu-item" href="order.php?criterio=editorial">Editorial</a>
+                                    <a class="menu-item" href="order.php?criterio=precio">Precio</a>
                                     <hr class="menu-divider">
                                     <a class="menu-item" href="#">Something else here</a>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                            </li>
+                            
                         </ul>
-                        <form class="hstack gap-2" role="search">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search" />
+                        <form class="hstack gap-2" role="search" action="filter.php" method="get">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="prompt" />
                             <button class="btn-solid btn-icon theme-secondary" type="submit">
                                 <svg class="bi" width="16" height="16">
                                     <use href="#search" />
@@ -84,8 +85,8 @@
                             <th scope="col">id</th>
                             <th scope="col">Título</th>
                             <th scope="col">Autor</th>
-                            <th scope="col">Editorial</th>
                             <th scope="col">Género</th>
+                            <th scope="col">Editorial</th>
                             <th scope="col" class="text-end">Precio</th>
                             <th>Acciones</th>
                         </tr>
@@ -102,13 +103,20 @@
                                 <!-- botones de acción -->
                                 <td> 
                                     <!-- boton editar -->
-                                    <a href="edit.php?indice=<?= $indice ?>" class="btn btn-outline-primary btn-sm" title="Editar">
+                                    <a href="edit.php?indice=<?= $indice ?>" class="btn theme-info btn-outline-primary btn-sm" title="Editar">
                                         <i class="bi bi-pencil"></i>
                                     </a> 
+
                                     <!-- eliminar -->
-                                    <i class="bi bi-trash3"></i>
+                                    <a href="delete.php?indice=<?= $indice ?>" class="btn btn-outline-primary btn-sm theme-warning" title="Eliminar">
+                                        <i class="bi bi-trash3"></i>
+                                    </a>
+                                    
                                     <!-- mostrar -->
-                                    <i class="bi bi-eye"></i>    
+                                    <a href="show.php?indice=<?= $indice ?>" class="btn btn-outline-primary btn-sm theme-danger" title="Mostrar">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                        
                                 </td>
                                 
                             </tr>
@@ -130,7 +138,7 @@
         <footer class="footer mt-auto py-3 fixed-bottom bg-light">
             <div class="container">
                 <span class="text-muted">&copy; 2026
-                    Juan Carlos Moreno - DWES - 2º DAW - Curso 26/27
+                    David Carrero Jiménez - DWES - 2º DAW - Curso 26/27
                 </span>
             </div>
         </footer>
