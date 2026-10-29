@@ -10,8 +10,13 @@
 
 Class Persona {
     // proiedades o atributos
-    public string $nombre;
-    public int $edad;
-    public string $sexo;
+    public ?string $nombre;
+    public ?int $edad;
+    public ?string $sexo;
 
+    public function __construct(){
+        $this -> nombre = null;
+        $this -> edad = null;
+        $this -> sexo = null;
+    }
 }
