@@ -1,12 +1,20 @@
 <?php
 
-// Cargar librerías
-require_once 'libs/functions.php';
+/**
+ * new.php
+ *
+ * Muestra el formulario en blanco para introducir un nuevo artículo.
+ *
+ * @package    CRUD Artículos
+ * @author     David Carrero Jiménez
+ * @version    1.0
+ */
 
-// Modelos
+// Cargar librerias
+
+// Models
 
 // Negociado
-$articulos = get_articulos();
 
 // Views
 include 'views/new.view.php';
