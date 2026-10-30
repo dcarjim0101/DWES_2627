@@ -24,6 +24,32 @@
             <span class="fs-6">Proyecto 3.2</span>
         </header>
 
+        <!-- Menú principal de la aplicación -->
+        <nav class="navbar md:navbar-expand bg-1">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Libros</a>
+                <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarDrawer" aria-controls="navbarDrawer" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" aria-hidden="true"></span>
+                </button>
+                <dialog class="drawer drawer-end" tabindex="-1" id="navbarDrawer" aria-labelledby="navbarDrawerLabel">
+                    <div class="drawer-header">
+                        <h5 class="drawer-title" id="navbarDrawerLabel">Menu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+                    </div>
+                    <div class="drawer-body mb-2 md:mb-0">
+                        <ul class="nav navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.php">Listado</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="new.php">Nuevo</a>
+                            </li>
+                        </ul>
+                    </div>
+                </dialog>
+            </div>
+        </nav>
+
         <!-- contenido principal de la aplicación -->
         <main>
             <div class="content">
@@ -33,10 +59,10 @@
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Nombre</th>
                             <th scope="col">Descripcion</th>
-                            <th scope="col">Categoria</th>
-                            <th scope="col" class="text-end">Stock</th>
+                            <th scope="col">Modelo</th>
+                            <th scope="col">Categorias</th>
+                            <th scope="col" class="text-end">Unidades</th>
                             <th scope="col" class="text-end">Precio</th>
                         </tr>
                     </thead>
@@ -44,10 +70,10 @@
                         <?php foreach ($articulos as $articulo): ?>
                             <tr>
                                 <th scope="row" class="text-end"><?= $articulo['id']  ?></th>
-                                <td><?= $articulo['nombre']  ?></td>
                                 <td><?= $articulo['descripcion']  ?></td>
-                                <td><?= $articulo['categoria']  ?></td>
-                                <td class="text-end"><?= number_format($articulo['stock'], 2, ',', '.')  ?> €</td>
+                                <td><?= $articulo['modelo']  ?></td>
+                                <td><?= $articulo['categorias']  ?></td>
+                                <td class="text-end"><?= number_format($articulo['unidades'], 2, ',', '.')  ?> €</td>
                                 <td class="text-end"><?= number_format($articulo['precio'], 2, ',', '.')  ?> €</td>
                             </tr>
                         <?php endforeach; ?>

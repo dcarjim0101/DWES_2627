@@ -27,7 +27,34 @@
         <!-- contenido principal de la aplicación -->
         <main>
             <div class="content">
+                <legend>Formulario Nuevo Libro</legend>
 
+                <!-- formulario nuevo libro -->
+                <form action="create.php" method="post">
+                    <div class="mb-3">
+                        <label for="autor" class="form-label">Descripcion:</label>
+                        <input type="text" class="form-control" id="autor" name="autor" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editorial" class="form-label">Modelo:</label>
+                        <input type="text" class="form-control" id="editorial" name="editorial" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="generos" class="form-label">Categorias:</label>
+                        <input type="text" class="form-control" id="generos" name="generos">
+                    </div>
+                    <div class="mb-3">
+                        <label for="precio" class="form-label">Unidades:</label>
+                        <input type="number" step="0.01" class="form-control" id="precio" name="precio">
+                    </div>
+                    <div class="mb-3">
+                        <label for="precio" class="form-label">Precio:</label>
+                        <input type="number" step="0.01" class="form-control" id="precio" name="precio">
+                    </div>
+                    <a class="btn-solid theme-danger" href="index.php" role="button">Cancelar</a>
+                    <button type="reset" class="btn-solid theme-warning">Borrar</button>
+                    <button type="submit" class="btn-solid theme-primary">Crear Articulo</button>
+                </form>
             </div>
 
         </main>
