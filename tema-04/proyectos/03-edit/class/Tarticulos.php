@@ -196,36 +196,43 @@ class Tarticulos
     {
         $this->tarticulos[] = $articulo;
     }
-}
 
-/*
-    Método getArticuloById()
-    Descripción: Devuelve un array con los nombres de las categorias a partir de los indices
-*/
-public function get_indice_categorias_a_nombres(array $indices): array
-{
-    $categorias = self::getCategorias();
-    $nombres = [];
-
-    foreach ($indices as $indice) {
-        if (isset($categorias[$indice])) {
-            $nombres[] = $categorias[$indice];
+    /*
+        método: getArticuloById()
+        Descripción: Devuelve un objeto de la clase Articulo a partir de su id
+    */
+    public function getArticuloById(int $id): ?Articulo
+    {
+        foreach ($this->tarticulos as $articulo) {
+            if ($articulo->getId() === $id) {
+                return $articulo;
+            }
         }
+        return null;
     }
 
-    return $nombres;
-}
-
-/*
-    metodo: getArticulosById()
-    descripcion: devuelve un objeto de la clase articuo a partir de su id
-*/
-public function getArticuloById(int $id): ?Articulo
-{
-    foreach ($this->tarticulos as $articulo) {
-        if ($articulo->getId() === $id) {
-            return $articulo;
+    /*
+        método: getIndiceById()
+        Descripción: Devuelve el indice del array de artículos a partir de su id
+    */
+    public function getIndiceById(int $id): ?int
+    {
+        foreach ($this->tarticulos as $indice => $articulo) {
+            if ($articulo->getId() === $id) {
+                return $indice;
+            }
         }
+        return null;
     }
-    return null;
+
+    /*
+        método: update()
+        Descripción: Actualiza un objeto de la clase Articulo a partir de su indice
+    */
+    public function update(int $indice, Articulo $articulo_actualizado): void
+    {
+        
+        $this->tarticulos[$indice] = $articulo_actualizado;
+       
+    }
 }

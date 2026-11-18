@@ -65,6 +65,7 @@
                             <th scope="col">Categorías</th>
                             <th scope="col" class="text-end">Unidades</th>
                             <th scope="col" class="text-end">Precio</th>
+                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,21 +78,22 @@
                                 <td><?= implode(', ', $tabla_articulos->get_indice_categorias_a_nombres($articulo->getCategorias())) ?></td>
                                 <td class="text-end"><?= $articulo->getUnidades() ?></td>
                                 <td class="text-end"><?= number_format($articulo->getPrecio(), 2, ',', '.') ?> €</td>
-
+                                <!-- botones de acción -->
                                 <td>
-                                    <!-- editar -->
+                                    <!--  editar -->
                                     <a href="edit.php?id=<?= $articulo->getId() ?>" class="btn btn-sm btn-primary">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <!-- borrar -->
-                                     <a href="delete.php?id=<?= $articulo->getId() ?>" class="btn btn-sm btn-danger">
+                                    <!--  borrar -->
+                                    <a href="delete.php?id=<?= $articulo->getId() ?>" class="btn btn-sm btn-danger">
                                         <i class="bi bi-trash"></i>
                                     </a>
-                                    <!-- mostrar -->
-                                     <a href="show.php?id=<?= $articulo->getId() ?>" class="btn btn-sm btn-info">
+                                    <!--  mostrar -->
+                                    <a href="show.php?id=<?= $articulo->getId() ?>" class="btn btn-sm btn-info">
                                         <i class="bi bi-eye"></i>
                                     </a>
                                 </td>
+
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
