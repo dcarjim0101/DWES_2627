@@ -4,7 +4,6 @@
 <head>
     <!-- Cargar HEAD, meta etiquetas y diseño de la aplicación -->
     <?php require_once __DIR__ . '/layouts/head.layout.php'; ?>
-    <title>Proyecto 4.3 - CRUD Artículos - POO Sin Encapsulamiento</title>
 </head>
 
 <body>
@@ -17,73 +16,61 @@
         <!-- contenido principal de la aplicación -->
         <main>
             <div class="content">
-                <legend>Formulario Edición Artículo</legend>
+                <legend>Formulario Edición Alumno</legend>
 
-                <form action="update.php?id=<?= $id ?>" method="post">
-                    <!-- descripcion -->
+                <form action="update.php?id=<?= $alumno->id ?>" method="post">
+                    <!-- nombre -->
                     <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripción:</label>
-                        <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?= $articulo->descripcion ?>" required>
+                        <label for="nombre" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?= htmlspecialchars($alumno->nombre) ?>" required>
                     </div>
-                    <!-- Modelo -->
+                    <!-- apellidos -->
                     <div class="mb-3">
-                        <label for="modelo" class="form-label">Modelo:</label>
-                        <input type="text" class="form-control" id="modelo" name="modelo" value="<?= $articulo->modelo ?>" required>
+                        <label for="apellidos" class="form-label">Apellidos:</label>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" value="<?= htmlspecialchars($alumno->apellidos) ?>" required>
                     </div>
-                    <!-- Marca -->
-                    <!-- Genera dinámicamente el select de marcas a partir del array $marcas -->
+                    <!-- email -->
                     <div class="mb-3">
-                        <label for="marca" class="form-label">Marca:</label>
-                        <button class="form-control combobox-toggle" type="button"
-                            data-bs-toggle="combobox"
-                            data-bs-name="marca"
-                            data-bs-placeholder="Seleccione marca …">
-                            <span class="combobox-value">Seleccione Marca ...</span>
-                            <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor" />
-                            </svg>
-                        </button>
-                        <div class="menu">
-                            <?php foreach ($marcas as $indice => $marca) : ?>
-                                <button class="menu-item <?= ($articulo->marca == $indice)? 'selected':null ?>" type="button" data-bs-value="<?= $indice ?>"><?= $marca ?></button>
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($alumno->email) ?>" required>
+                    </div>
+                    <!-- fecha de nacimiento -->
+                    <div class="mb-3">
+                        <label for="f_nacimiento" class="form-label">Fecha de nacimiento:</label>
+                        <input type="date" class="form-control" id="f_nacimiento" name="f_nacimiento" value="<?= htmlspecialchars($alumno->f_nacimiento) ?>" required>
+                    </div>
+                    <!-- curso -->
+                    <!-- Genera dinámicamente la lista desplegable a partir del array $cursos -->
+                    <div class="mb-3">
+                        <label for="curso" class="form-label">Curso:</label>
+                        <select class="form-select" id="curso" name="curso" required>
+                            <?php foreach ($cursos as $indice => $curso) : ?>
+                                <option value="<?= $indice ?>" <?= ($alumno->curso === $indice) ? 'selected' : null ?>><?= htmlspecialchars($curso) ?></option>
                             <?php endforeach; ?>
-                        </div>
+                        </select>
                     </div>
-                    <!-- Marca -->
-
-                    <!-- unidades -->
+                    <!-- asignaturas -->
+                    <!-- Genera dinámicamente una lista checkbox a partir del array $asignaturas -->
                     <div class="mb-3">
-                        <label for="unidades" class="form-label">Unidades:</label>
-                        <input type="number" min="0" step="1" class="form-control" id="unidades" name="unidades" value="<?= $articulo->unidades ?>" required>
-                    </div>
-                    <!-- precio -->
-                    <div class="mb-3">
-                        <label for="precio" class="form-label">Precio:</label>
-                        <input type="number" min="0" step="0.01" class="form-control" id="precio" name="precio" value="<?= $articulo->precio ?>" required>
-                    </div>
-                    <!-- Categorías -->
-                    <!-- Genera dinámicamente una lista checbox de categorías a partir del array $categorias -->
-                    <div class="mb-3">
-                        <label for="categorias" class="form-label">Categorías:</label>
-                        <?php foreach ($categorias as $indice => $categoria) : ?>
+                        <label class="form-label">Asignaturas:</label>
+                        <?php foreach ($asignaturas as $indice => $asignatura) : ?>
                             <div class="form-check">
                                 <div class="form-field">
-                                    <input type="checkbox" id="checkaccent" class="check theme-secondary" name="categorias[]" value="<?= $indice ?>" <?= in_array($indice, $articulo->categorias)? 'checked': null ?> />
-                                    <label for="checkaccent"><?= $categoria ?></label>
+                                    <input type="checkbox" id="asignatura_<?= $indice ?>" class="check theme-secondary" name="asignaturas[]" value="<?= $indice ?>" <?= in_array($indice, $alumno->asignaturas) ? 'checked' : null ?> />
+                                    <label for="asignatura_<?= $indice ?>"><?= htmlspecialchars($asignatura) ?></label>
                                 </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
                     <br>
-                    <div class="btn-group" role="group" aria-label="Basic example">
+                    <div class="btn-group" role="group" aria-label="Acciones del formulario">
                         <a class="btn-solid theme-danger" href="index.php" role="button">Cancelar</a>
-                        <button type="reset" class="btn-solid theme-warning">Borrar</button>
-                        <button type="submit" class="btn-solid theme-primary">Actualizar Artículo</button>
+                        <button type="reset" class="btn-solid theme-warning">Restablecer</button>
+                        <button type="submit" class="btn-solid theme-primary">Actualizar Alumno</button>
                     </div>
 
                 </form>
             </div>
-
         </main>
 
         <!-- pie de página de la aplicación -->
@@ -91,6 +78,8 @@
 
         <!-- js bootstrap básico 6.0 -->
         <?php require_once __DIR__ . '/layouts/js_bootstrap.php'; ?>
+
+    </div>
 </body>
 
 </html>

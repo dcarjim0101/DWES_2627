@@ -1,60 +1,48 @@
 <?php
 
 /*
-    controladdor: update.php
-    
-    descripción: actualiza  los detalles de un artículo en la tabla de artículos.
+    controlador: update.php
 
-    parámetro  GET:
+    descripción: actualiza los detalles de un alumno en la tabla de alumnos.
 
-        - id: identificador del artículo a editar.
+    parámetro GET:
+        - id: identificador del alumno a actualizar.
 */
 
 // Cargar las clases necesarias
-require_once __DIR__ . '/class/Articulo.php';
-require_once __DIR__ . '/class/Tarticulos.php';
+require_once __DIR__ . '/class/Alumno.php';
+require_once __DIR__ . '/class/TablaAlumnos.php';
 
+// 1. Obtener id del alumno desde la URL
+$id = (int) ($_GET['id'] ?? 0);
 
-// 1. Obtener id del artículo a editar desde la URL
-$id = $_GET['id'] ?? null;
+// 2. Extraer los datos del formulario enviados por POST
+$nombre = $_POST['nombre'] ?? null;
+$apellidos = $_POST['apellidos'] ?? null;
+$email = $_POST['email'] ?? null;
+$f_nacimiento = $_POST['f_nacimiento'] ?? null;
+$curso = isset($_POST['curso']) ? (int) $_POST['curso'] : null;
+$asignaturas_alumno = array_map('intval', $_POST['asignaturas'] ?? []);
 
-// 2. Extraemos los datos del formulario de edición enviados por POST
-$descripcion = $_POST['descripcion'] ?? null;
-$modelo = $_POST['modelo'] ?? null;
-$marca = (int) $_POST['marca']?? null;
-$categorias = $_POST['categorias'] ?? null;
-$unidades = $_POST['unidades']?? null;
-$precio = $_POST['precio']?? null;
+// 3. Crear un nuevo objeto Alumno con los datos actualizados
+$alumno_actualizado = new Alumno($id, $nombre, $apellidos, $email, $f_nacimiento, $curso, $asignaturas_alumno);
 
-// 3. Crear un nuevo objeto de la clase Articulo con los datos actualizados
-$articulo_actualizado = new Articulo(
-    $id,
-    $descripcion, 
-    $modelo, 
-    $marca, 
-    $categorias, 
-    $unidades, 
-    $precio
-);
+// 4. Crear la tabla y cargar los datos
+$tabla_alumnos = new TablaAlumnos();
+$tabla_alumnos->addAlumnos();
 
-// 4. Crear objeto de la clase Tarticulos
-$tabla_articulos = new Tarticulos();    
+// 5. Obtener el índice del alumno a actualizar
+$indice = $tabla_alumnos->getIndiceById($id);
 
-// 5. Cargar los datos en la tabla de  artículos
-$tabla_articulos->addArticulos();
+// 6. Actualizar el alumno (si existe)
+if ($indice !== null) {
+    $tabla_alumnos->update($alumno_actualizado, $indice);
+}
 
-// 5. Obtener indice del articulo a editar
-$indice = $tabla_articulos->getIndiceById($id);
+// 7. Cargar los datos para la vista principal
+$alumnos = $tabla_alumnos->talumnos;
+$cursos = TablaAlumnos::getCursos();
+$asignaturas = TablaAlumnos::getAsignaturas();
 
-// 6. Actualizar el artículo en la tabla de artículos
-$tabla_articulos->update($indice, $articulo_actualizado);
-
-// 7. Cargar la tabla de artículos actualizada
-$articulos = $tabla_articulos->tarticulos;
-
-// 8. Cargar la lista de marcas y categorías para la vista principal
-$marcas = Tarticulos::getMarcas();
-$categorias = Tarticulos::getCategorias();
-
-// 9. Cargar la vista principal de la aplicación
+// 8. Cargar la vista principal
 require_once __DIR__ . '/views/index.view.php';

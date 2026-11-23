@@ -1,41 +1,37 @@
 <?php
 
 /*
-    controladdor: delete.php
-    
-    descripción: elimina un articulo de la tabla a partir de  su id y redirige a la página principal.
+    controlador: delete.php
 
-    parámetro  URL (GET):
+    descripción: elimina un alumno de la tabla a partir de su id y muestra el listado.
 
-        - id: identificador del artículo a editar.
+    parámetro GET:
+        - id: identificador del alumno a eliminar.
 */
 
 // Cargar las clases necesarias
-require_once __DIR__ . '/class/Articulo.php';
-require_once __DIR__ . '/class/Tarticulos.php';
+require_once __DIR__ . '/class/Alumno.php';
+require_once __DIR__ . '/class/TablaAlumnos.php';
 
+// 1. Obtener id del alumno desde la URL
+$id = (int) ($_GET['id'] ?? 0);
 
-// 1. Obtener id del artículo a editar desde la URL
-$id = $_GET['id'] ?? null;
+// 2. Crear la tabla y cargar los datos
+$tabla_alumnos = new TablaAlumnos();
+$tabla_alumnos->addAlumnos();
 
-// 2. Crear objeto de la clase Tarticulos
-$tabla_articulos = new Tarticulos();
+// 3. Obtener el índice del alumno
+$indice = $tabla_alumnos->getIndiceById($id);
 
-// 3. Cargar los datos en la tabla de  artículos
-$tabla_articulos->addArticulos();
+// 4. Eliminar el alumno (si existe)
+if ($indice !== null) {
+    $tabla_alumnos->delete($indice);
+}
 
-// 4. Buscar el artículo a editar por su id
-$indice = $tabla_articulos->getIndiceById($id);
+// 5. Cargar los datos para la vista principal
+$alumnos = $tabla_alumnos->talumnos;
+$cursos = TablaAlumnos::getCursos();
+$asignaturas = TablaAlumnos::getAsignaturas();
 
-// 5. Eliminar el artículo de la tabla de artículos
-$tabla_articulos->delete($indice);
-
-// 6. Cargo la tabla de artículos actualizada
-$articulos = $tabla_articulos->tarticulos;
-
-// 5. Cargar las marcas y categorías para el formulario
-$marcas = Tarticulos::getMarcas();
-$categorias = Tarticulos::getCategorias();
-
-// 6. Carga la vista del formulario de edición
+// 6. Cargar la vista principal
 require_once __DIR__ . '/views/index.view.php';

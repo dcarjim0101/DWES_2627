@@ -2,52 +2,38 @@
 
 /*
     controlador: create.php
-    descripción: Añade un nuevor artículo al  array de artículos.
+    descripción: añade un nuevo alumno al array de alumnos.
 */
 
 // Cargamos las clases necesarias
-require_once __DIR__ . '/class/Articulo.php';
-require_once __DIR__ . '/class/Tarticulos.php';
+require_once __DIR__ . '/class/Alumno.php';
+require_once __DIR__ . '/class/TablaAlumnos.php';
 
-// Cargamos los detalles del formulario
-$descripcion = $_POST['descripcion'] ?? null;
-$modelo = $_POST['modelo'] ?? null;
-$marca = (int) $_POST['marca']?? null;
-$categorias = $_POST['categorias'] ?? null;
-$unidades = $_POST['unidades']?? null;
-$precio = $_POST['precio']?? null;
+// 1. Creamos la tabla y cargamos los datos
+$tabla_alumnos = new TablaAlumnos();
+$tabla_alumnos->addAlumnos();
 
-// Validación no se  hace
+// 2. Cargamos los detalles del formulario (validación no se hace)
+$nombre = $_POST['nombre'] ?? null;
+$apellidos = $_POST['apellidos'] ?? null;
+$email = $_POST['email'] ?? null;
+$f_nacimiento = $_POST['f_nacimiento'] ?? null;
+$curso = isset($_POST['curso']) ? (int) $_POST['curso'] : null;
+$asignaturas_alumno = array_map('intval', $_POST['asignaturas'] ?? []);
 
-// Generar id del nuevo artículo
-$id = 7; // En un caso real, se generaría automáticamente
+// 3. Generamos el id del nuevo alumno (mayor id + 1)
+$id = $tabla_alumnos->getNuevoId();
 
-// Creamos un nuevo artículo de la clase Articulo
-$articulo = new Articulo(
-    $id,
-    $descripcion, 
-    $modelo, 
-    $marca, 
-    $categorias, 
-    $unidades, 
-    $precio
-);
+// 4. Creamos el objeto Alumno
+$alumno = new Alumno($id, $nombre, $apellidos, $email, $f_nacimiento, $curso, $asignaturas_alumno);
 
-// Creamos un objeto de la clase Tarticulos
-$tabla_articulos = new Tarticulos();
+// 5. Lo añadimos a la tabla
+$tabla_alumnos->create($alumno);
 
-// Cargamos los datos
-$tabla_articulos->addArticulos();
+// 6. Cargamos los datos para la vista principal
+$alumnos = $tabla_alumnos->talumnos;
+$cursos = TablaAlumnos::getCursos();
+$asignaturas = TablaAlumnos::getAsignaturas();
 
-// Añadimos el nuevo artículo al array de artículos
-$tabla_articulos->create($articulo);
-
-// Cargamos los arrays de marcas y categorías para generar el formulario dinámico
-$marcas = Tarticulos::getMarcas();
-$categorias = Tarticulos::getCategorias();
-
-// Cargamos la tabla de artículos
-$articulos = $tabla_articulos->tarticulos;
-
-// Cargamos la vista principal de la aplicación
+// 7. Cargamos la vista principal
 require_once __DIR__ . '/views/index.view.php';
