@@ -43,7 +43,7 @@
                     <!-- Genera dinámicamente la lista desplegable a partir del array $cursos -->
                     <div class="mb-3">
                         <label for="curso" class="form-label">Curso:</label>
-                        <select class="form-select" id="curso" name="curso" required>
+                        <select class="form-control combobox-toggle" id="curso" name="curso" required>
                             <?php foreach ($cursos as $indice => $curso) : ?>
                                 <option value="<?= $indice ?>" <?= ($alumno->curso === $indice) ? 'selected' : null ?>><?= htmlspecialchars($curso) ?></option>
                             <?php endforeach; ?>
